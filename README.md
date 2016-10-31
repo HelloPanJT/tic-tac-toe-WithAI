@@ -1,6 +1,6 @@
 # Module 3 individual assignment #
 
-Submitted by: x500@umn.edu
+Submitted by: panxx389@umn.edu
 
 Heroku URL: heroku_url_to_your_app
 

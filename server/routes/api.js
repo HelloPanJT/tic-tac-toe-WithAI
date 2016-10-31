@@ -27,6 +27,7 @@ router.get('/movies/:id', function(req, res, next) {
   if (movie) {
     res.send(movie)
   } else {
+    console.log("hello")
     res.status(404).send('movie id %d not found', req.params.id);
   }
 

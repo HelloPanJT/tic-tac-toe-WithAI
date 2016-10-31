@@ -1,28 +1,46 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
-
 import logo from './logo.svg';
-
+import request from 'superagent';
 class Foo extends Component {
-
-  componentDidMount() {
-    console.log('FOO')
+  constructor() {
+    super();
+    this.state = { movie: []}
   }
+  componentDidMount() {
+    var self = this;
+    var movieId=this.props.params.movieId;
+    var reqRoute='/api/movies/'+movieId;
+    request
+     .get(reqRoute)
+     .set('Accept', 'application/json')
+     .end(function(err, res) {
+       if (err || !res.ok) {
+         console.log('Oh no! error', err);
+       } else {
+         console.log(res.body.movieId);
+         self.setState({movie: res.body});
+       }
+     });
+  }
+  render(){
+      return <Root movie={this.state.movie}/>
+  }
+}
 
+class Root extends Component {
   render() {
+    var movie=this.props.movie;
     return (
-      <div className="Foo">
-        <p>
-          You are now on FOO! <Link to={`/`}>back to home</Link>
-        </p>
-        <div className="Foo-header">
-          <img src={logo} className="Foo-logo" alt="logo" />
-          <h2>Welcome to React FOO</h2>
-        </div>
-        <p className="Foo-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        <ul>
+          <li>movieId: {movie.movieId}</li>
+          <li>releaseYear: {movie.releaseYear}</li>
+          <li>avgRating: {movie.avgRating}</li>
+          <li>mpaa: {movie.mpaa}</li>
+          <li>genres: {movie.genres} </li>
+          <li>plotSummary: {movie.plotSummary} </li>
+          <Link to={`/`}>back to home</Link>
+        </ul>
     );
   }
 }

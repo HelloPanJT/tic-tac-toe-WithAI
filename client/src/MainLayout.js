@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
 
-import logo from './logo.svg';
+import logo from './color.jpg';
 import './MainLayout.css';
 
 class MainLayout extends Component {
 
   render() {
     return (
-      <div className="MainLayout">
-        <div className="MainLayout__header">
-          <img src={logo} className="MainLayout__logo" alt="logo" />
-          <h2>San Dimas High School Football</h2>
+  <div>
+    <nav id="header-nav" className="navbar navbar-default">
+      <div className="container">
+        <div className="navbar-header">
+          <img src={logo} className="MainLayout__logo pull-left" alt="logo" />
+          <div className="navbar-brand">
+              <h1>Welcome to our movie website</h1>
+          </div>
         </div>
-
-        <main>
-          {this.props.children}
-        </main>
       </div>
+    </nav>  
+     <div>
+       {this.props.children}
+      </div> 
+  </div>
     );
   }
 }

@@ -11,8 +11,9 @@ movies.movieList.map(function(movie) {
 
 /* GET example. */
 router.get('/example', function(req, res, next) {
+  console.log("hello");
   var foo = {
-    message: 'hello from express!'
+    message:'hello from express!'
   }
   res.send(foo);
 });

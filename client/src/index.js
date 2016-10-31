@@ -14,7 +14,7 @@ render((
   <Router history={browserHistory}>
     <Route component={MainLayout}>
       <Route path="/" component={Root}/>
-      <Route path="/foo" component={Foo}/>
+      <Route path="/foo/:movieId" component={Foo}/>
     </Route>
   </Router>
 ), document.getElementById('root'))

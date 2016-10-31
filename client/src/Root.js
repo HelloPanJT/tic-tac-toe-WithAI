@@ -5,27 +5,24 @@ import request from 'superagent';
 class RootContainer extends Component {
   constructor() {
     super();
-    this.state = { message: '' }
+    this.state = { message: []}
   }
-
   componentDidMount() {
     var self = this;
     request
-     .get('/api/example')
+     .get('/api/movies')
      .set('Accept', 'application/json')
      .end(function(err, res) {
        if (err || !res.ok) {
          console.log('Oh no! error', err);
        } else {
-         self.setState({message: res.body.message});
+         self.setState({message: res.body.movieList});
        }
      });
   }
-
-  render() {
-    return <Root message={this.state.message} />;
-  }
-
+   render() {
+      return <Root message={this.state.message} />;
+   }
 }
 
 var amazingInlineJsStyle = {
@@ -36,22 +33,17 @@ var amazingInlineJsStyle = {
 
 class Root extends Component {
   render() {
+    var movieList=this.props.message.map((movie) =>
+           <ul>
+             <li>Title: {movie.title}</li>
+             <li>releaseYear: {movie.releaseYear}</li>
+             <li>avgRating: {movie.avgRating}</li>
+             <Link to={'/foo/'+movie.movieId}>more detail</Link>
+           </ul>
+         )
     return (
-      <div className="Root">
-        <p>
-          Message from server:
-          <span style={amazingInlineJsStyle}>{this.props.message}</span>
-        </p>
-        <p>
-          Root! <Link to={`/foo`}>a link to foo</Link>
-        </p>
-      </div>
+        <div className="Root">{movieList}</div>
     );
   }
 }
-
-Root.propTypes = {
-  message: React.PropTypes.string
-};
-
 export default RootContainer;

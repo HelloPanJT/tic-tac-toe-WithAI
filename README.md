@@ -2,7 +2,7 @@
 
 Submitted by: panxx389@umn.edu
 
-Heroku URL: heroku_url_to_your_app
+Heroku URL: https://individual3.herokuapp.com/
 
 ## Overview #
 

@@ -18,7 +18,6 @@ class Foo extends Component {
        if (err || !res.ok) {
          console.log('Oh no! error', err);
        } else {
-         console.log(res.body.movieId);
          self.setState({movie: res.body});
        }
      });

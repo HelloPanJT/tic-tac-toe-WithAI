@@ -40,7 +40,7 @@ class Root extends Component {
           <li>plotSummary: {movie.plotSummary} </li>
           <Link to={`/`}>back to home</Link>
           <div>
-            <a href={'http://www.imdb.com/title/tt'+movie.movieId}>go to imdb</a>
+            <a href={'http://www.imdb.com/title/tt'+movie.movieId} target="_blank">go to imdb</a>
           </div>
         </ul>
     );

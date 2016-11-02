@@ -39,6 +39,9 @@ class Root extends Component {
           <li>genres: {movie.genres} </li>
           <li>plotSummary: {movie.plotSummary} </li>
           <Link to={`/`}>back to home</Link>
+          <div>
+            <a href={'http://www.imdb.com/title/tt'+movie.movieId}>go to imdb</a>
+          </div>
         </ul>
     );
   }

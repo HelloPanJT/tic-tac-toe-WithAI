@@ -1,27 +1,19 @@
 {
-  "name": "tic-tac-withai",
+  "name": "5117-module-3-assignment-template",
   "version": "0.1.0",
   "description": "intro to react",
   "dependencies": {
-    "bcrypt": "^0.8.7",
+    "bcrypt": "^1.0.2",
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
-    "debug": "~2.3.2",
+    "debug": "~2.2.0",
     "ejs": "^2.5.2",
-    "express": "~4.14.0",
-    "jsonwebtoken": "^7.1.9",
-    "material-ui-chip-input": "^0.10.0",
-    "moment": "^2.17.1",
-    "mongoose": "^4.6.6",
+    "express": "~4.13.4",
+    "jsonwebtoken": "^7.2.1",
     "morgan": "~1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "react": "15.3.2",
-    "react-dom": "15.3.2",
-    "react-tap-event-plugin": "1.0.0",
-    "request": "^2.78.0",
-    "serve-favicon": "~2.3.0",
-    "validator": "^6.1.0"
+    "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
     "foreman": "^2.0.0",
@@ -47,5 +39,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/umn-5117-f16/module-3-assignment-template/issues"
+  },
+  "homepage": "https://github.com/umn-5117-f16/module-3-assignment-template#readme"
 }

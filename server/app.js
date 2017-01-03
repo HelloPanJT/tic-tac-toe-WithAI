@@ -36,7 +36,6 @@ app.use('/static', express.static(path.join(reactBase, 'static')));
 // app.use(express.static(reactBase));
 var indexFile = path.join(reactBase, 'index.html')
 
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

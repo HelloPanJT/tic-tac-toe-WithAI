@@ -21,4 +21,5 @@ RoomCleaner.prototype.removeRoomByName = function(name) {
   }
 }
 
+
 module.exports = RoomCleaner;

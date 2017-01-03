@@ -1,9 +1,9 @@
 var Board = require('./Board');
 var AIPlayer = require('./AIPlayer');
-var gameStat = require('./gameStat');
+var gameStat = require('./GameStat');
 var symbol = require('./BoardParams').symbol;
 var Utility = require('./Utility');
-const constSet = require('./constSet');
+const constSet = require('./ConstSet');
 const timerParams = require('./TimerParams');
 var TimerConvert = require('./TimerConvert');
 var timerConvert = new TimerConvert();

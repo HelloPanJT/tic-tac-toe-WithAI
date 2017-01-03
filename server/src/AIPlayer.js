@@ -1,6 +1,6 @@
 var aiParams = require('./AIPlayerParams').AIparams;
 var gameStat = require('./GameStat');
-const constSet = require('./constSet');
+const constSet = require('./ConstSet');
 var AIPlayer = function(board, symbol, oppSymbol) {
   this.board = board;
   this.symbol = symbol;

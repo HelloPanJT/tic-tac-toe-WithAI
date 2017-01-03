@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import update from 'react-addons-update';
 import style from './GridStyle';
 
 class GridButton extends Component {
@@ -11,7 +10,8 @@ class GridButton extends Component {
   }
   
   render() {
-    var newStyle = update(style, {$merge: {backgroundColor: this.props.color}});
+    // the following copy way will change style object
+    var newStyle = Object.assign(style, {backgroundColor: this.props.color});
     return (
       <span>
         <button 

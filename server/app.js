@@ -5,9 +5,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const passport = require('passport');
 
-var routes = require('./routes/index');
-var api = require('./routes/api');
+var routes = require('./src/index');
+var server = require('./src/server');
+const localLoginStrategy = require('./passport/login');
 
 var app = express();
 
@@ -24,7 +26,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', routes);
-app.use('/api', api);
+app.use(passport.initialize());
+passport.use('login', localLoginStrategy);
+app.use('/api', server);
 
 var reactBase = path.resolve(__dirname, '../client/build')
 if (!fs.existsSync(reactBase)) {
@@ -33,10 +37,7 @@ if (!fs.existsSync(reactBase)) {
 app.use('/static', express.static(path.join(reactBase, 'static')));
 // app.use(express.static(reactBase));
 var indexFile = path.join(reactBase, 'index.html')
-app.use(function(req, res, next) {
-  // TODO - catch errors http://expressjs.com/en/api.html#res.sendFile
-  res.sendFile(indexFile);
-});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,7 +47,6 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {

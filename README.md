@@ -1,131 +1,81 @@
-# Module 3 individual assignment #
+# Module 3 group project #
+__Submitted by:__ _Today_
 
-Submitted by: panxx389@umn.edu
+__Team members:__
+````
+Nanxiang Zhang  : zhan4584@umn.edu
+Jintian Pan     : panxx389@umn.edu
+Gloria Zhang    : zhan2209@umn.edu
+Zheng Sun       : sunxx738@umn.edu
+````
 
-Heroku URL: https://individual3.herokuapp.com/
+__Heroku URL:__ _https://serene-garden-98230.herokuapp.com_
 
-## Overview #
+__Argument of ambition (optional, maximum 100 words):__
+_Briefly argue why this was a technically ambitious project_
 
-Your goal is to understand and extend a skeleton app that connects ReactJS with Express.
-
-## Getting started ##
-
-### Run the app ###
-
-First, we need to install our dependencies. To do this, run
-
-    npm install
-
-Let's confirm that everything is working by starting our server.
-To start the development server go to the base directory of your
-project and run:
-
-    npm start
-
-This should automatically open a browser window to
-`http://localhost:3000`. If it didn't, simply
-navigate to it directly.
-
-### Deploy to Heroku ###
-
-Now that we know it is working locally, let's deploy it to Heroku.
-You should be able to follow the normal deploy process.
-
-Once you have successfully deployed the app. Go to its url and
-confirm that it looks like you would expect.
+* 1. Sign Up <b>check username</b>:
+	once user give a username (for example:previous), we will check database, and get all the username with the same starters, if exits, it will build a dirctionary tree and return the other 3 recommend username as "previous1" "previous2" "previous3" and the maximum time cost is 3n, n is the length of current duplicate username.
+* 2. <b>Password requirement</b>: longer than 8 and with at least 1 UPPER letter, 1 lower letter, 1 digit and 1 special mark !@#$%.
+* 3. Auto refresh, the website will refresh automitlly after user actions.  
 
 
-### Understand the code layout ###
 
-#### Server ####
+__Argument of execution (optional, maximum 100 words):__
+_Briefly argue why this was a well executed project_
 
-First, take a look around `/server`. The layout should be familiar.  It is a simple express.js app, not much more than the result of running the express generator. The entry point is `app.js`. The role of the server in single-page applications (SPA) is to provide data for the client.
+* 1. User login use theri account username/password. Or apply a new account. login to check personal board.
+* 2. User can <b>Add</b> course in user board use <i>coursera URL</i> and in discover board click bookmark(from blue to pink) to add to personal board.
+* 3. The <i>coursera URL</i> can not end with "/" and can not be the course in coursera special list.
+* 4. User can <b>Delete</b> course in user board use delete button and in discover boardcancel bookmark(from pinkto blue) to delete course from personal board.
+* 5. User can <b>Edit</b> course in user board for both description and Tag
+* 6. User can <b>Search</b> both by Tag and Titile keywords.
+* 7. For each course under discover board, user can  bookmark and cancel bookmark
 
-Restart you local server and try pointing your browser to this URL:
+## Description ##
+The group project for module 3 is to create a website for collecting and organizing content.
 
-    http://localhost:3000/api/movies
+Some sites that can serve as inspiration:
 
-Do you see anything? I don't, give this URL a try:
+- pinterest: users save images to "boards".
+- pocket and delicious: users save and organize URLs
+- zotero: users save academic articles, organize them into groups, tag them, and export them in various formats
+- reddit and hackernews: users post, vote on, and discuss URLs
 
-    http://localhost:3001/api/movies
+Generally, these sites allow users to (a) collect content into collections, lists, or tags, (b) annotate the content with additional information, and (c) browse and search for other information on the site.
 
-See something now? Good.
+We encourage you to build a site to curate content that's interesting to you. Ideas:
 
-That URL and response is defined in `/server/routes/api.js`.
-
-But what is going on here? Our server is running on port 3000 so what gives? This gets into some of the behind-the-scenes magic of our React development environment. `npm start` actually started two web servers. One runs on port 3000 (react development server) and the other on port 3001 (express). The react server on port 3000 is provided to make react development easy by serving an app directly from the contents of the `client/src` directory, even though that source code is not browser-ready without a build step. The react development server on 3000 is configured to proxy RESTful API requests to the express server on 3001.
-
-As a developer, you will typically interact with the port 3000 app. This setup is very similar to the one described here: <https://www.fullstackreact.com/articles/using-create-react-app-with-a-server/>
-
-
-#### Client ####
-
-Now, take a look around `/client`. This is a skeleton ReactJS
-application, initially created by running
-[create-react-app](https://github.com/facebookincubator/create-react-app)
-with some minor modifications.
-
-
-#### client + server = single page application ####
-
-The client handles all of the html, while the server provides data through API endpoints that return JSON. This is the basic architecture of a single-page application (SPA).
-
-### Make changes, see what happens ###
-
-To learn more about what's going on here, make experimental changes to files in the client (e.g., src/MainLayout.js or src/Root.js), and watch the changes affect what's shown in the browser.
-
-If you are using `npm start` your changes should appear as soon as you save your file.
-
-### React-router ###
-
-Go to the main page of our app. There should be a link called "a link to foo". Click this link and watch the terminal running your server carefully. Did you see anything change? You shouldn't have. We went to `localhost:3000/foo`, but the server didn't record any activity. This is because react is doing all the routing client side and doesn't touch the server for the new webpage.
-
-To see how this is done go to `client/src/index.js`, which defines the routes, using [react-router](https://github.com/ReactTraining/react-router).
-
-See the [react-router introduction docs](https://github.com/ReactTraining/react-router/blob/master/docs/Introduction.md) for more information on exactly what's going on here. The main point to understand is that client-side code is swapping html templates in and out as the user clicks links.
-
-Here's another good guide: <https://css-tricks.com/learning-react-router/>
-
-### Making an API call to express ###
-
-See the method `componentDidMount` in `client/src/Root.js` for an example of how to fetch data from an API call to express. (What's that componentDidMount hook? See <https://facebook.github.io/react/docs/react-component.html>)
-
-The code in `Root.js` code also demonstrates passing data between components, as discussed in <https://css-tricks.com/learning-react-container-components/>
+- Airbnb rentals
+- NPM packages
+- Amazon products
+- NES ROMs
 
 
-## Assignment ##
+## Requirements ##
 
-Your task is to create very tiny movie site by changing code in /client. You should not have to change code in other directories (e.g., /server) to complete this assignment.
+- Build a site on react, express, and mongo. Host the site on heroku.
+- The site must allow users to:
+  - Add new content.
+  - Edit existing content, e.g., by changing its description or giving it a descriptive tag
+  - Delete existing content
+- The site must allow the content to be organized.  E.g., collections, lists, or tags.
+- The site must allow users to browse the site in a reasonable way via links.
 
-### Background ###
 
-The express server has two routes (/api/movies and /api/movies/:movieId) that return JSON to the client with movie information. There are only 12 movies in this dataset. You should be able to see this api by visiting, e.g.,
+### Encouraged, but optional ###
 
-    http://localhost:3001/api/movies
-    http://localhost:3001/api/movies/122904
+- Content import via identifier (e.g., URL). Many interfaces (Facebook, Slack, Pocket) allow users to add links, which the site then parses to find some content (e.g., a title, an image). Allow your users to do something similar.
+- Search. Add a site-search feature that allows users to find content. It does not count to add a google site search box :)  This could, for example, be an autocomplete widget that shows tags, or an open-ended widget that searches the text of imported items.
+- Multi-user support.  Allow multiple users to independently contribute content.  There is no need for full authentication, but you could allow users to "log in" by typing a username.  You could simply track and display activity by user, or to be more ambitious, you could give different users different views (e.g., the homepage shows the logged-in user's collections).
+- Responsive design. Make the site render in a usable way on an iphone 7 (or equivalent).
 
-### Your tasks ###
 
-0. Change the application's header and style.  Get rid of the current style, react icon, and content, and put in a simple header and styling that makes this look like a custom movie site.  No need for fancy style.
+## Submission ##
+- Your code should be pushed up to your repo on github
+- Fill this `README.md` out with your team name, team members' emails, and
+- Heroku url for your demo. Additionally, complete the argument sections at the top of the file.
 
-1. Convert the home page of the app (`/`) to show a list of movies (i.e., it should render a `MovieList` component that you will write). Your new component should fetch `/api/movies` from the server, then render the results into a list or grid view. Each movie in the display should show at least these items:
 
-    * title
-    * releaseYear
-    * average rating
-    * link to the "movie details page" (see next item)
-
-    Remember, this is very similar to what `Root.js` is currently doing, the main additional step is to iterate over a list, rather than rendering a single object.  See <https://facebook.github.io/react/docs/lists-and-keys.html#rendering-multiple-components>
-
-2. Add a route to the react app (`/movies/:movieId`) that shows a single movie (e.g., a `Movie` component) and its details, including:
-
-    * all of the properties listed above
-    * a link to imdb (using imdbMovieId)
-    * mpaa
-    * genres
-    * plotSummary
-    * a link back to the home page
-
-    (if you want to add an image for fun, those are hosted at TMDb -- e.g., <http://image.tmdb.org/t/p/original/gpaOYwHCF2O5PM5sqFpfzKWuQvb.jpg>)
-
-3. Push your amazing movie site to heroku, and fill out the README above so that we can give you a checkmark.
+## Grading ##
+You will be graded on the __ambition__ and __execution__ of the project. At the top of this `README.md` you have the opportunity to argue why your submission was ambitious and well executed. In order for us to grade it, you must have it hosted on Heroku. To earn an "A" grade, a project must be technically ambitious, well-executed, and polished. To earn a passing grade, a project must minimally fulfill the three requirements listed in the description.

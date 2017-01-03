@@ -2,19 +2,18 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, browserHistory, IndexRoute } from 'react-router'
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import 'react-mdl/extra/material.css';
+import 'react-mdl/extra/material.js';
+import Board from './Board'
 
-import Root from './Root'
-import Foo from './Foo'
-import MainLayout from './MainLayout'
-import './index.css'
-
-// see https://github.com/ReactTraining/react-router
 render((
-  <Router history={browserHistory}>
-    <Route component={MainLayout}>
-      <Route path="/" component={Root}/>
-      <Route path="/foo/:movieId" component={Foo}/>
-    </Route>
-  </Router>
+  <MuiThemeProvider muiTheme={getMuiTheme()}>
+    <Router history={browserHistory}>
+      <Route path="/" component={Board}/>
+    </Router>
+  </MuiThemeProvider>
 ), document.getElementById('root'))

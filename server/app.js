@@ -9,7 +9,6 @@ const passport = require('passport');
 
 var routes = require('./src/index');
 var server = require('./src/server');
-const localLoginStrategy = require('./passport/login');
 
 var app = express();
 
@@ -27,7 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', routes);
 app.use(passport.initialize());
-passport.use('login', localLoginStrategy);
 app.use('/api', server);
 
 var reactBase = path.resolve(__dirname, '../client/build')

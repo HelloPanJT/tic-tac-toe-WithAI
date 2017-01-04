@@ -25,11 +25,11 @@ class Board extends Component {
       showRB: true,
       over: false,
       timeout: false,
-      lastP2Pos: null
     }
     this.onChange = this.onChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleRBClick = this.handleRBClick.bind(this);
+    this.lastP2Pos = null;
   }
   
   onChange(event) {
@@ -189,10 +189,10 @@ class Board extends Component {
 
             if (res.body.pos !== ConstSet.NULL) {
               self.renderGrid(res.body.pos, UserType.AI);
-              if (res.body.status == GameStat.UNFINISHED){
-                setColor(self.state.lastP2Pos, ColorManager.SELF);
-                setColor(res.body.pos, ColorManager.OPPLAST);
-                self.setState({lastP2Pos: res.body.pos});
+              if (res.body.status === GameStat.UNFINISHED){
+                self.setColor(self.lastP2Pos, ColorManager.BACKGROUND);
+                self.setColor(res.body.pos, ColorManager.OPPLAST);
+                self.lastP2Pos = res.body.pos;
               }
             }
 

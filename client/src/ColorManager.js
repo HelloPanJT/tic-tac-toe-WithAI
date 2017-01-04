@@ -1,6 +1,6 @@
 var ColorManager = {
   BACKGROUND: "white",
-  OPPLAST: "yello",
+  OPPLAST: "yellow",
   SELF: "blue"
 }
 

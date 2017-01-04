@@ -9,6 +9,7 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import ConstSet from './ConstSet'
 import GameStat from './GameStat'
+import ColorManager from './ColorManager'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -18,12 +19,13 @@ class Board extends Component {
     var size = BoardParams.WIDTH * BoardParams.HEIGHT * BoardParams.LAYERNUM;
     this.state = {
       grids: Array(size).fill(null),
-      colors: Array(size).fill('white'),
+      colors: Array(size).fill(ColorManager.BACKGROUND),
       roomName: ConstSet.NULL,
       alSet: false,
       showRB: true,
       over: false,
-      timeout: false
+      timeout: false,
+      lastP2Pos: null
     }
     this.onChange = this.onChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -82,7 +84,7 @@ class Board extends Component {
         if (res.body.success) {
           var size = BoardParams.WIDTH * BoardParams.HEIGHT * BoardParams.LAYERNUM;
           var grids = new Array(size).fill(null);
-          var colors = new Array(size).fill('white');
+          var colors = new Array(size).fill(ColorManager.BACKGROUND);
           self.setState({grids: grids, colors: colors, over: false, timeout: false});
         } else {
           window.alert("fail to restart, please refresh the page!");
@@ -171,10 +173,10 @@ class Board extends Component {
             console.log('something wrong happened');
           } else {
             if (res.body.status === GameStat.PLAYER1WIN) {
-              self.remindRes(res.body.posNums, "blue");
+              self.remindRes(res.body.posNums, ColorManager.SELF);
               self.setGameOver();
             } else if (res.body.status === GameStat.PLAYER2WIN) {
-              self.remindRes(res.body.posNums, "yellow");
+              self.remindRes(res.body.posNums, ColorManager.OPPLAST);
               self.setGameOver();
             } else if (res.body.status === GameStat.DRAW) {
               self.remindDraw();
@@ -187,6 +189,11 @@ class Board extends Component {
 
             if (res.body.pos !== ConstSet.NULL) {
               self.renderGrid(res.body.pos, UserType.AI);
+              if (res.body.status == GameStat.UNFINISHED){
+                setColor(self.state.lastP2Pos, ColorManager.SELF);
+                setColor(res.body.pos, ColorManager.OPPLAST);
+                self.setState({lastP2Pos: res.body.pos});
+              }
             }
 
             if (res.body.status !== GameStat.TIMEOUT) {
@@ -197,6 +204,14 @@ class Board extends Component {
     }
   }
   
+  setColor(lastP2Pos, color) {
+    if (lastP2Pos !== null) {
+      const colors = this.state.colors.slice();
+      colors[lastP2Pos] = color;
+      this.setState({colors: colors});
+    }
+  }
+
   setGameOver() {
     this.setState({over: true})
   }

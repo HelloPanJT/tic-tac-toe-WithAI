@@ -12,9 +12,9 @@ router.post('/startGame', function(req, res) {
 });
 
 router.post('/restartGame', function(req, res) {
-	roomManager.cleanRoom(req.body.roomName);
-	var success = roomManager.addRoom(req.body.roomName);
-	res.send({success: success});
+  roomManager.cleanRoom(req.body.roomName);
+  var success = roomManager.addRoom(req.body.roomName);
+  res.send({success: success});
 })
 module.exports = router;
 
